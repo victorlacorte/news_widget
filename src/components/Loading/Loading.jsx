@@ -9,7 +9,6 @@ function Loading() {
       <RingChild />
       <RingChild />
       <RingChild />
-
     </Ring>
   );
 }

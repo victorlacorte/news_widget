@@ -23,10 +23,11 @@ const RingChild = styled.div`
   width: 51px;
   height: 51px;
   margin: 6px;
-  border: 6px solid #fff;
+  border-width: 6px;
+  border-style: solid;
   border-radius: 50%;
+  border-color: ${({ theme }) => theme.palette.blue.main} transparent transparent transparent;
   animation: ${rotate} 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: #fff transparent transparent transparent;
 
   &:nth-child(1) {
     animation-delay: -0.45s;

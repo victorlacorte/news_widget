@@ -9,6 +9,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { ThemeProvider } from 'styled-components';
 
 import App from 'app';
+
+import Main from 'components/Main';
 import theme from 'commons/styles/theme';
 
 import rootReducer from './reducers';
@@ -21,7 +23,9 @@ const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <ThemeProvider theme={theme}>
-      <App />
+      <Main>
+        <App />
+      </Main>
     </ThemeProvider>
   </Provider>,
   document.getElementById('root'),

@@ -23,20 +23,17 @@ const baseTheme = {
       dark: '#262626',
     },
     grey: {
-      light: '#d8d8e4',
+      light: '#d8d8e430',
       main: '#d8d8e4',
-      dark: '#A4A4A4',
+      dark: '#a4a4a4',
     },
   },
   typography: {
-    fontFamily: {
-      Roboto,
-    },
     h1: {
       fontFamily: Roboto,
       fontWeight: 500,
       fontSize: 32,
-      lineHeight: 1,
+      lineHeight: 1.75,
     },
     h2: {
       fontFamily: Roboto,

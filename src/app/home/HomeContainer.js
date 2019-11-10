@@ -7,8 +7,6 @@ function mapStateToProps(state) {
   const {
     sources,
     articles,
-    // currSource,
-    // currPage,
     loading: newsApiLoading,
     error: newsApiError,
   } = state.news;
@@ -16,8 +14,6 @@ function mapStateToProps(state) {
   return {
     sources,
     articles,
-    // currSource,
-    // currPage,
     newsApiLoading,
     newsApiError,
   };
@@ -36,46 +32,14 @@ function mapDispatchToProps(dispatch) {
     newsOperations.fetchSources(dispatch);
   }
 
-  // function setSource(source) {
-  //   newsOperations.setSource(dispatch, source);
-  // }
-
-  // function setPage(page) {
-  //   newsOperations.setPage(dispatch, page);
-  // }
-
   return {
     fetchArticles,
     fetchMoreArticles,
     fetchSources,
-    // setSource,
-    // setPage,
   };
 }
-
-// function mergeProps(stateProps, dispatchProps) {
-//   function fetchArticles(source) {
-//     dispatchProps.setPage(1);
-//     dispatchProps.fetchArticles(1, source);
-//   }
-
-//   function fetchMoreArticles(source) {
-//     const { currPage } = stateProps.curPage;
-
-//     dispatchProps.setPage(currPage + 1);
-//     dispatchProps.fetchMoreArticles(currPage + 1, source);
-//   }
-
-//   return {
-//     ...stateProps,
-//     ...dispatchProps,
-//     fetchArticles,
-//     fetchMoreArticles,
-//   };
-// }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-  // mergeProps,
 )(HomeComponent);

@@ -5,6 +5,17 @@
 import React, { useState, useLayoutEffect, useEffect } from 'react';
 
 import Loading from 'components/Loading';
+import NewsArticle from 'components/NewsArticle';
+import Select from 'components/Select';
+
+import {
+  Header,
+  LoadingContainer,
+  Title,
+  StyledButton,
+  ApiError,
+  NewsApiText,
+} from './styles';
 
 // Are we being repainted with every article addition?
 // We need to verify how each update affects our rendering
@@ -43,54 +54,63 @@ function HomeComponent(props) {
   }, [currSource, sources])
 
   if (!articles.length) {
-    return <Loading />;
+    return (
+      <LoadingContainer>
+        <Loading />
+      </LoadingContainer>
+    );
   }
 
   return (
     <>
-    {/* Powered by Newsapi.org <logo> */}
-      <label htmlFor="source-select">Filtrar por fonte</label>
-      <select
-        id="source-select"
-        onChange={(event) => {
-          // reset page and source
-          setCurrPage(1);
-          setCurrSource(event.target.value); // source.id
-        }}
-      >
-        {sources.map((source) => (
-          <option key={source.id} value={source.id}>
-            {source.name}
-          </option>
-        ))}
-      </select>
+      <Header>
+        <Title>Notícias</Title>
+
+        <Select
+          onChange={(event) => {
+            // reset page and source
+            setCurrPage(1);
+            setCurrSource(event.target.value); // source.id
+          }}
+        >
+          {sources.map((source) => (
+            <option key={source.id} value={source.id}>
+              {source.name}
+            </option>
+          ))}
+        </Select>
+      </Header>
 
       {articles.map((article) => (
-        <div key={article.url}>
-          {article.title}
-          {/* TODO expand with more props */}
-        </div>
+        <NewsArticle
+          key={article.url}
+          title={article.title}
+          url={article.url}
+          publishedAt={article.publishedAt}
+          sourceName={article.sourceName}
+        />
       ))}
 
-      <button
-        type="button"
-        onClick={() => {
-          // TODO is this happening how it should?
-          // const page = currPage;
 
-          fetchMoreArticles(currPage + 1, currSource);
-          setCurrPage((val) => val + 1);
-        }}
-      >
-        Mostrar mais
-      </button>
+      {newsApiLoading
+        ? <Loading />
+        : (
+          <StyledButton
+            type="button"
+            onClick={() => {
+              fetchMoreArticles(currPage + 1, currSource);
+              setCurrPage((val) => val + 1);
+            }}
+          >
+            Mostrar mais
+          </StyledButton>
+        )}
 
-      {newsApiLoading && <Loading />}
-
-      {newsApiError && <div>Error!</div>}
+      {newsApiError
+        ? <ApiError>newsapi.org indisponível</ApiError>
+        : <NewsApiText>Powered by newsapi.org</NewsApiText>}
     </>
   );
-
 }
 
 export default HomeComponent;

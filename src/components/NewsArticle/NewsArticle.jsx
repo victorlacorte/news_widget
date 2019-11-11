@@ -38,10 +38,6 @@ function NewsArticle(props) {
   );
 }
 
-NewsArticle.defaultProps = {
-  sourceName: 'N/A',
-};
-
 NewsArticle.propTypes = {
   title: PropTypes.string.isRequired,
 
@@ -49,7 +45,7 @@ NewsArticle.propTypes = {
 
   publishedAt: PropTypes.string.isRequired,
 
-  sourceName: PropTypes.string,
+  sourceName: PropTypes.string.isRequired,
 };
 
 export default NewsArticle;

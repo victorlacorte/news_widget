@@ -18,7 +18,7 @@ const LinkTitle = styled.a`
 
 const Container = styled.div`
   display: flex;
-  margin-top: 24px;
+  margin-top: 32px;
 
   ${({ theme }) => theme.breakpoints.up('sm')`
     & > *:first-child {

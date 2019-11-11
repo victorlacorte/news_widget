@@ -10,12 +10,12 @@ exports[`<NewsArticle /> creates a NewsArticle component 1`] = `
     Foo
   </styled.a>
   <styled.div>
-    <styled.span>
+    <styled.div>
       08/11/2019
-    </styled.span>
-    <styled.span>
+    </styled.div>
+    <styled.div>
       Bar
-    </styled.span>
+    </styled.div>
   </styled.div>
 </styled.div>
 `;

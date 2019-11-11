@@ -23,6 +23,7 @@ const Container = styled.div`
   ${({ theme }) => theme.breakpoints.up('sm')`
     & > *:first-child {
       margin-right: 24px;
+      align-items: center;
     }
   `}
 
@@ -50,9 +51,10 @@ const SourceName = styled.div`
 
   color: white;
   background-color: ${({ theme }) => theme.palette.grey.main};
-  padding: 0 36px;
+  padding: 4px 36px;
   border-radius: 4px;
   width: fit-content;
+  text-align: center;
 `;
 
 export {

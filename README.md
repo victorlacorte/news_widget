@@ -1,6 +1,16 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# News widget
+
+# Installation
+
+* `git clone https://github.com/victorlacorte/news_widget.git && cd news_widget`
+* `npm i`
+* `cp .env.example .env.development.local` and include a valid [NewsAPI](https://newsapi.org/) key instead of "my-api-key"
+* `npm start` and open a browser on `http://localhost:3000`
+* The app should be running!
 
 ## Available Scripts
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 In the project directory, you can run:
 
@@ -23,31 +33,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
-
-## Step-by-step
-### Installation
-`npx install-peerdeps --dev eslint-config-airbnb`
-`npm i --save-dev jest eslint-plugin-jest`
-`npm i --save-dev enzyme enzyme-adapter-react-16 enzyme-to-json`
-`npm i --save-dev redux-mock-store redux-devtools-extension`
-`npm i axios prop-types redux react-redux styled-components`
-maybe install babel-plugin-styled-components
-maybe install --save-dev react-test-renderer to render snapshots
-
-add jest snapshotSerializers to package.json:
-
-```javascript
-"jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
-  }
-```
-
-Remover eslintConfig do package.json e criar o .eslintrc
-
-## TODO
-
-* Creditar News.org (Powered by News.org)
-* home/duck tests
-* documentar: .env.development.local -> deve conter uma chave de acesso

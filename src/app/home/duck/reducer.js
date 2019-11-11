@@ -1,7 +1,5 @@
 import types from './types';
 
-// TODO we need a source before requesting an article
-// useLayoutEffect for setting sources and then useEffect for rerendering, maybe
 const INITIAL_STATE = {
   sources: [],
   articles: [],

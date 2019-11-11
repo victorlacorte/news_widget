@@ -28,7 +28,6 @@ function fetchArticlesFactory(successDispatch) {
 }
 
 
-// todo maybe sanitize articles before setting
 function fetchArticles(dispatch, page, source) {
   return fetchArticlesFactory(receiveArticles)(dispatch, page, source);
 }
@@ -37,7 +36,6 @@ function fetchMoreArticles(dispatch, page, source) {
   return fetchArticlesFactory(receiveMoreArticles)(dispatch, page, source);
 }
 
-// todo maybe sanitize consults before setting
 function fetchSources(dispatch) {
   dispatch(requestSources());
 

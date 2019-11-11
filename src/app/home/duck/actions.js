@@ -46,4 +46,4 @@ export default {
   requestSources,
   receiveSources,
   setApiError,
-}
+};

@@ -1,8 +1,5 @@
-// watch out for eventual setSources error: since it is necessary for our application
-// to function, we could even reference a static list (or render everything as a Skeleton)
-// and display an error message, like "refresh the page", "wait longer", etc
-
 import React, { useState, useLayoutEffect, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import Loading from 'components/Loading';
 import NewsArticle from 'components/NewsArticle';
@@ -17,14 +14,11 @@ import {
   NewsApiText,
 } from './styles';
 
-// Are we being repainted with every article addition?
-// We need to verify how each update affects our rendering
 function HomeComponent(props) {
   const {
     // mapped state
     sources,
     articles,
-    // currSource,
     newsApiLoading,
     newsApiError,
 
@@ -32,7 +26,6 @@ function HomeComponent(props) {
     fetchArticles,
     fetchMoreArticles,
     fetchSources,
-    // setSource,
   } = props;
 
   const [currPage, setCurrPage] = useState(1);
@@ -42,6 +35,7 @@ function HomeComponent(props) {
     if (!sources.length) {
       fetchSources();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -51,7 +45,8 @@ function HomeComponent(props) {
       setCurrSource(sources[0].id);
       fetchArticles(currPage, sources[0].id);
     }
-  }, [currSource, sources])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currSource, sources]);
 
   if (!articles.length) {
     return (
@@ -112,5 +107,30 @@ function HomeComponent(props) {
     </>
   );
 }
+
+HomeComponent.propTypes = {
+  sources: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  })).isRequired,
+
+  articles: PropTypes.arrayOf(PropTypes.shape({
+    sourceName: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    urlToImage: PropTypes.string.isRequired,
+    publishedAt: PropTypes.string.isRequired,
+  })).isRequired,
+
+  newsApiLoading: PropTypes.bool.isRequired,
+
+  newsApiError: PropTypes.bool.isRequired,
+
+  fetchArticles: PropTypes.func.isRequired,
+
+  fetchMoreArticles: PropTypes.func.isRequired,
+
+  fetchSources: PropTypes.func.isRequired,
+};
 
 export default HomeComponent;
